@@ -229,3 +229,66 @@
     padding-top: 1rem !important;
     border: none !important;
 }
+
+
+/* ==========================================================================
+   GitHub Header & Sidebar Badges / Buttons
+   ========================================================================== */
+
+/* 1. Top breadcrumb GitHub button */
+.github-header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #24292f !important;
+    background-color: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none !important;
+}
+
+.github-header-btn:hover {
+    background-color: #0969da;
+    color: #ffffff !important;
+    border-color: #0969da;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.github-header-btn .fa-github {
+    font-size: 1rem;
+}
+
+/* 2. Sidebar GitHub Button */
+.sidebar-github-link {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.sidebar-gh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    background-color: #24292f;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none !important;
+}
+
+.sidebar-gh-btn:hover {
+    background-color: #2ea44f;
+    color: #ffffff !important;
+    border-color: transparent;
+}

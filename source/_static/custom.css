@@ -1,0 +1,231 @@
+/* ==========================================================================
+   BTick Documentation — Custom Styling
+   Improves main content readability and typography to match ROS 2 documentation
+   ========================================================================== */
+
+/* 1. Layout & Content Width
+   Expands the default RTD max-width (800px) to 64rem (1024px), matching the
+   ROS 2 documentation layout while preserving full responsiveness. */
+.wy-nav-content {
+    max-width: 64rem;
+    padding: 2rem 3rem;
+}
+
+@media screen and (max-width: 768px) {
+    .wy-nav-content {
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+/* 2. Body Typography & Paragraphs
+   Slightly increases base text scale and enhances line-height for readability. */
+.rst-content {
+    font-size: 16px;
+}
+
+.rst-content p {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+/* 3. Heading Hierarchy, Sizes & Margins */
+.rst-content h1 {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.rst-content h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.25rem;
+}
+
+.rst-content h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.rst-content h4 {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 4. Lists & Spacing */
+.rst-content ul,
+.rst-content ol {
+    margin-bottom: 1.25rem;
+}
+
+.rst-content li {
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+}
+
+.rst-content li > p {
+    margin-bottom: 0.4rem;
+}
+
+.rst-content li > ul,
+.rst-content li > ol {
+    margin-top: 0.3rem;
+    margin-bottom: 0.4rem;
+}
+
+/* 5. Inline Code & Code Blocks */
+.rst-content code,
+.rst-content tt.literal,
+.rst-content code.literal {
+    font-size: 0.875rem;
+    padding: 0.15em 0.35em;
+    border-radius: 3px;
+    background-color: #f4f6f8;
+    color: #c7254e;
+    border: 1px solid #e1e4e8;
+    word-break: break-word;
+}
+
+.rst-content pre code,
+.rst-content .highlight code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: 0.875rem;
+}
+
+.rst-content .highlight {
+    margin-bottom: 1.25rem;
+    border-radius: 4px;
+}
+
+.rst-content div[class^="highlight"] {
+    margin-bottom: 1.25rem;
+}
+
+/* 6. Tables Layout & Density */
+.wy-table-responsive {
+    margin-bottom: 1.75rem;
+    max-width: 100%;
+}
+
+.rst-content .wy-table-responsive table.docutils,
+.rst-content table.docutils {
+    margin-bottom: 1.75rem;
+    width: 100% !important;
+    font-size: 0.95rem;
+}
+
+.rst-content table.docutils td,
+.rst-content table.docutils th,
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    padding: 1rem 1rem !important;
+    line-height: 1.7 !important;
+    white-space: normal !important;
+    word-break: normal;
+    overflow-wrap: break-word;
+    vertical-align: top;
+}
+
+.rst-content table.docutils td p,
+.rst-content table.docutils th p,
+.wy-table-responsive table td p,
+.wy-table-responsive table th p {
+    line-height: 1.7 !important;
+    margin-bottom: 0.4rem;
+}
+
+.rst-content table.docutils td p:last-child,
+.rst-content table.docutils th p:last-child,
+.wy-table-responsive table td p:last-child,
+.wy-table-responsive table th p:last-child {
+    margin-bottom: 0 !important;
+}
+
+.rst-content table.docutils tbody tr {
+    border-bottom: 1px solid #e1e4e5;
+}
+
+/* 7. Admonitions & Notes */
+.rst-content .admonition {
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+}
+
+.rst-content .admonition .admonition-title {
+    font-size: 1rem;
+    margin: -0.75rem -1rem 0.75rem -1rem;
+    padding: 0.5rem 1rem;
+}
+
+.rst-content .admonition p:last-child {
+    margin-bottom: 0;
+}
+
+/* 8. Images & Figures */
+.rst-content .figure,
+.rst-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 9. Sidebar Header & Logo */
+.wy-side-nav-search > a.icon.icon-home {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.wy-side-nav-search > a img.logo {
+    display: block;
+    margin: 0.85rem auto 0.5rem auto;
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+.config-dropdown {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-top: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.config-dropdown summary.sd-summary-title {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    padding: 0 !important;
+    color: #333 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.config-dropdown summary.sd-summary-title:hover {
+    color: #2980b9 !important;
+}
+
+.config-dropdown summary.sd-summary-title .sd-summary-text {
+    font-weight: 700 !important;
+    padding-right: 0.5rem;
+}
+
+.config-dropdown .sd-summary-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 1rem !important;
+    border: none !important;
+}

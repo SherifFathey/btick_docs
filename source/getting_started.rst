@@ -160,14 +160,14 @@ For native desktop execution without Docker:
 
 .. code-block:: bash
 
-   wget https://github.com/SherifFathey/btick_app/releases/latest/download/btick_v1.2.3_amd64.deb
+   https://github.com/SherifFathey/btick_app/releases/latest
 
 2. **Install via apt**:
 
 .. code-block:: bash
 
    sudo apt update
-   sudo apt install ./btick_v1.2.3_amd64.deb
+   sudo apt install ./btick_*.deb
 
 3. **Launch the Application**:
 

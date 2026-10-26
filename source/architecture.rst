@@ -22,7 +22,7 @@ The bridge layer acts as a multiplexer and normalization engine, abstracting the
     |  btick::Monitor                     /behavior_tree_log           Groot2Publisher      |
     +---------------------------------------------------------------------------------------+
                 |                                 |                             |
-          ROS 2 Topics                       ROS 2 Topic                  TCP / ZeroMQ
+          ROS 2 Topics                       ROS 2 Topic                  TCP / ZMQ
             (/btick/*)                   (/behavior_tree_log)             (1667 / 1668)
                 |                                 |                             |
                 +---------------------------------+-----------------------------+
@@ -75,7 +75,7 @@ Components
      - Provides passive, read-only monitoring by subscribing to Nav2's native ``/behavior_tree_log`` topic, matching navigation events against loaded XML trees without accepting commands.
    * - **Groot2 ZMQ Bridge**
      - ``bridge/groot2_bridge.py``
-     - Connects to BehaviorTree.CPP's ``BT::Groot2Publisher`` via ZeroMQ REQ (port 1667) and SUB (port 1668) sockets, retrieving tree structures, polling statuses, and managing breakpoint hooks.
+     - Connects to BehaviorTree.CPP's ``BT::Groot2Publisher`` via ZMQ REQ (port 1667) and SUB (port 1668) sockets, retrieving tree structures, polling statuses, and managing breakpoint hooks.
    * - **Visualizer & Editor**
      - ``src/`` (React + ReactFlow)
      - Web and desktop frontend providing real-time tree canvas visualization, interactive execution controls where supported, visual XML tree editing, and session recording and replay.
@@ -93,7 +93,7 @@ Robot Communication Protocols
 
 3. **Groot2**
 
-   Connects to ``BT::Groot2Publisher`` through ZeroMQ REQ and SUB sockets, using default ports ``1667`` and ``1668``, respectively. It supports tree and status retrieval, read-only Blackboard inspection, supported debugging controls, and transition monitoring. Blackboard writes, port editing, and delay injection are not supported.
+   Connects to ``BT::Groot2Publisher`` through ZMQ REQ and SUB sockets, using default ports ``1667`` and ``1668``, respectively. It supports tree and status retrieval, read-only Blackboard inspection, supported debugging controls, and transition monitoring. Blackboard writes, port editing, and delay injection are not supported.
 
 .. figure:: _static/images/Protocols.png
    :alt:  BTick bridge architecture showing supported protocols and their capabilities
@@ -114,7 +114,7 @@ The bridge communicates with the frontend using two internal web transports:
 Groot2 Connection Settings
 --------------------------
 
-The Groot2 bridge connects to BehaviorTree.CPP's ``BT::Groot2Publisher`` via ZeroMQ REQ and SUB sockets:
+The Groot2 bridge connects to BehaviorTree.CPP's ``BT::Groot2Publisher`` via ZMQ REQ and SUB sockets:
 
 * **Target Host**: Configurable via ``--zmq-host`` (environment: ``ZMQ_HOST``, default: ``127.0.0.1``). In standalone ``groot2_bridge.py``, configured via ``--host``.
 * **REQ Socket Port**: Configurable via ``--zmq-port`` (environment: ``ZMQ_PORT``, default: ``1667``). In standalone ``groot2_bridge.py``, configured via ``--port``.

@@ -21,7 +21,7 @@ Use the Monitor interface to:
 
 The Monitor workspace consists of the following primary interface areas:
 
-* **Header Bar**: Displays the application branding, session recording controls (**Record** / **Stop**, **Load**), and the **Settings** menu.
+* **Header Bar**: Displays the application branding, session recording controls (**Record** / **Stop**, **Load**), and the **Settings** menu (gear icon).
 
 * **Left Sidebar**:
 
@@ -55,6 +55,8 @@ The Monitor workspace consists of the following primary interface areas:
 .. figure:: _static/images/breakpoint_banner.png
    :align: center
 * **Node Details Panel (Right Drawer)**: Opens with the title **Node Information** when selecting a node in the display area. Shows node status, type, category, tick count, duration, runtime modifications, port bindings, and protocol-specific debugging panels.
+
+* **Settings Drawer**: Opened by clicking the gear icon (⚙) in the top-right header bar. Provides controls for configuring application theme (**Appearance**) and execution status reset modes (**Live Status**) under the BTick protocol.
 
 * **Bottom Panel Drawer**: An expandable bottom drawer with tabs for **Event Log**, **Breakpoints**, and **Fault Injections**.
 
@@ -116,6 +118,47 @@ Nodes in the display area dynamically reflect execution states via colored borde
 
          <span style="display:block; color:#454545; padding:6px 10px; text-align:center; font-weight:bold;">Previous Status Color</span>
      - The node was skipped during execution.
+
+Live Status Reset Modes
+-----------------------
+
+When monitoring behavior tree execution under the **BTick** protocol, you can configure how node statuses are reset on the canvas between ticks:
+
+1. Click the **Settings** (⚙) icon in the top-right header bar.
+2. In the **Settings** drawer under **Live Monitoring**, locate the **Live Status** options.
+3. Switch between **Current Tick** and **Parent Re-tick**:
+
+.. figure:: _static/images/settings.png
+   :alt: Settings drawer showing Appearance theme and Live Status reset mode options
+   :align: center
+
+.. list-table::
+   :widths: 22 39 39
+   :header-rows: 1
+
+   * - Aspect
+     - Current Tick
+     - Parent Re-tick
+
+   * - **Reset Trigger**
+     - Resets node statuses at the start of each new tick.
+     - Resets node status only when its parent node is re-ticked.
+
+   * - **Visual Behavior**
+     - Nodes not evaluated during the active tick immediately return to ``IDLE``. The display area exclusively highlights the instantaneous active execution path.
+     - Completed nodes retain their status (``SUCCESS``, ``FAILURE``, etc.) while sibling or descendant nodes continue executing, until their parent re-evaluates.
+
+   * - **Persistence**
+     - Transient; displays only what executed in the latest cycle.
+     - Persistent; preserves recent branch context across multiple cycles.
+
+   * - **Best For**
+     - High-frequency tick loops, reactive control trees, and identifying the exact real-time execution path without leftover visual state.
+     - Long-running sequences, parallel branches, and multi-step tasks where preserving completed steps provides better operational context.
+
+.. note::
+
+   **Protocol Support**: Customizing the **Live Status** reset mode is available exclusively with the **BTick** protocol. When using **Groot2** or **Nav2**, execution status display adheres to the respective protocol's native event stream.
 
 4. Selecting Nodes and Inspecting Details
 =========================================
@@ -304,7 +347,7 @@ Replaying a Recorded Session
 
 Available capabilities depend on the active integration:
 
-* **BTick** provides full bidirectional monitoring and debugging, including live blackboard writes, execution-delay injection, and runtime port editing.
+* **BTick** provides full bidirectional monitoring and debugging, including live blackboard writes, execution-delay injection, runtime port editing, and configurable live status reset modes (**Current Tick** vs. **Parent Re-tick**).
 * **Groot2** provides live tree visualization, breakpoint debugging, forced status overrides (Success/Failure), and read-only blackboard inspection .
 * **Nav2** provides non-intrusive, passive telemetry by subscribing directly to Nav2 topics, tracking execution states and failures without remote debugging controls.
 

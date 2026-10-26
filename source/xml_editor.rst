@@ -16,6 +16,10 @@ Accessing the Editor
 
 To switch from live monitoring to the editor, click the **XML Editor** mode button in the top navigation bar. You can return to live monitoring at any time by clicking **Monitor**.
 
+.. figure:: _static/images/xml_editor.png
+         :alt: Left sidebar showing mode switcher, protocol selector, view mode toggle, and navigation tabs
+         :align: center
+
 Opening & Creating Behavior Tree XML Files
 ==========================================
 

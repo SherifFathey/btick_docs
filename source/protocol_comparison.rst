@@ -25,11 +25,11 @@ The three integration methods differ in how they discover behavior trees, receiv
      - Passive, read-only monitoring
    * - **Tree Structure**
      - Automatically discovered through ROS 2 topics
-     - Retrieved from the running tree through ZeroMQ
+     - Retrieved from the running tree through ZMQ
      - XML loaded manually and matched against Nav2 logs
    * - **Execution Updates**
      - Event-driven node transitions
-     - Status polling and asynchronous ZeroMQ notifications
+     - Status polling and asynchronous ZMQ notifications
      - Node transitions published by Nav2
    * - **Breakpoints**
      - Supported
@@ -43,6 +43,10 @@ The three integration methods differ in how they discover behavior trees, receiv
      - Live port updates supported
      - Not supported
      - Not supported
+   * - **Status Reset Modes**
+     - Configurable (**Current Tick** / **Parent Re-tick**)
+     - Native Groot2 event stream
+     - Native Nav2 event stream
    * - **Multiple Trees**
      - Multiple monitored trees, routed by ``tree_id``
      - One active tree per publisher connection; XML may contain multiple subtrees
@@ -73,7 +77,7 @@ Which One Should I Use?
 
   * Your application already uses ``BT::Groot2Publisher``.
   * You need tree visualization, execution monitoring, breakpoint-based control, or forced-status injection through Groot2's debugging interface.
-  * You want to monitor a BehaviorTree.CPP application through ZeroMQ.
+  * You want to monitor a BehaviorTree.CPP application through ZMQ.
 
 - **Use Nav2 when:**
 

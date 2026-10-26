@@ -103,7 +103,7 @@ Paste the complete, verified configuration below:
 
    * **HTTP Web Interface:** Open ``http://localhost:3000`` on the host, or ``http://<robot-ip>:3000`` from another device. Configured through ``HTTP_PORT``.
    * **WebSocket Transport:** The browser connects to the bridge through ``ws://localhost:8080``, or ``ws://<robot-ip>:8080`` remotely. Configured through ``WS_PORT``.
-   * **ZeroMQ:** The bridge connects to the Groot2 publisher at ``ZMQ_HOST:ZMQ_PORT``. The defaults are ``127.0.0.1:1667``.
+   * **ZMQ:** The bridge connects to the Groot2 publisher at ``ZMQ_HOST:ZMQ_PORT``. The defaults are ``127.0.0.1:1667``.
 
    **ROS 2 Configuration**
 

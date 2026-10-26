@@ -158,9 +158,14 @@ For native desktop execution without Docker:
 
 1. **Download the Package**:
 
-.. code-block:: bash
+   Open the `latest BTick release <https://github.com/SherifFathey/btick_app/releases/latest>`_.
+   Under **Assets**, download the latest ``.deb`` package to your computer.
 
-   https://github.com/SherifFathey/btick_app/releases/latest
+   You can also download the latest package from a terminal with:
+
+   .. code-block:: bash
+
+      wget "$(curl -s https://api.github.com/repos/SherifFathey/btick_app/releases/latest | grep "browser_download_url.*$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4)"
 
 2. **Install via apt**:
 

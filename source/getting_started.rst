@@ -191,3 +191,58 @@ First Launch
 
 Connect BTick to a supported behavior tree source to start monitoring its execution.
 
+Option C: Mobile & Local Network Access
+=======================================
+
+BTick allows developers and field operators to monitor and debug Behavior Trees directly from mobile phones, tablets, or remote laptops on the same Wi-Fi / Local Area Network without installing any extra software.
+
+1. Instant Pairing via QR Code
+------------------------------
+
+When running the BTick web application or desktop client:
+
+1. Click the **Settings** gear icon (⚙) in the top-right header.
+2. Select **Mobile & Network Access**.
+3. Scan the generated QR code using any smartphone or tablet camera.
+4. The BTick Progressive Web Interface opens instantly on your mobile device.
+
+.. figure:: _static/images/mobile.png
+   :alt: BTick mobile interface
+   :align: center
+
+
+.. note::
+   Your phone/tablet must be connected to the same Wi-Fi network or mobile hotspot as the host machine running the BTick bridge.
+
+2. Network Bridge CLI Options
+-----------------------------
+
+When launching the bridge server manually or via Python scripts, you can customize the ports and network binding:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 20 55
+
+   * - Option
+     - Default
+     - Description
+   * - ``--http-port <PORT>``
+     - ``3000``
+     - Port serving the web visualizer application.
+   * - ``--ws-port <PORT>``
+     - ``8080``
+     - WebSocket communication port used by web and mobile clients.
+   * - ``--host <IP>`` / ``--lan-ip <IP>``
+     - *Auto-detected*
+     - Custom LAN IP address or hostname to advertise (useful for multi-NIC, VPN, or hotspot setups).
+   * - ``--open-browser``
+     - ``False``
+     - Automatically opens the default browser on ``http://localhost:<HTTP_PORT>``.
+
+Example command:
+
+.. code-block:: bash
+
+   python3 bridge/bt_bridge.py --http-port 8080 --host 192.168.1.50
+
+

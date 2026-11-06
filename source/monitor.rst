@@ -29,6 +29,7 @@ The Monitor workspace consists of the following primary interface areas:
   * Connection and protocol selector (**BTick**, **Groot2**, **Nav2**).
   * View mode toggle (**Focused** (single-tree view) vs. **Multi-Tree**).
   * Navigation tabs (**Trees**, **Breakpoints**, **Fault Injections**).
+
 .. grid:: 2
    :gutter: 3
 
@@ -52,11 +53,13 @@ The Monitor workspace consists of the following primary interface areas:
   * **Bottom-Left Display Area Controls**: Includes zoom, fit view, layout orientation, path style, display lock, and reset layout controls.
 
 * **Breakpoint Banner**: When execution pauses at a breakpoint, a top banner displays the paused node name and action buttons: **Continue**, **Success**, **Failure**, and **Remove Breakpoint**.
+
 .. figure:: _static/images/breakpoint_banner.png
    :align: center
+
 * **Node Details Panel (Right Drawer)**: Opens with the title **Node Information** when selecting a node in the display area. Shows node status, type, category, tick count, duration, runtime modifications, port bindings, and protocol-specific debugging panels.
 
-* **Settings Drawer**: Opened by clicking the gear icon (⚙) in the top-right header bar. Provides controls for configuring application theme (**Appearance**) and execution status reset modes (**Live Status**) under the BTick protocol.
+* **Settings Drawer**: Opened by clicking the gear icon (⚙) in the top-right header bar. Provides controls for configuring application theme (**Appearance**), execution status reset modes (**Live Status**) under the BTick protocol, and **Mobile & Network Access** (displaying the local network URL and offline QR code for smartphone/tablet pairing).
 
 * **Bottom Panel Drawer**: An expandable bottom drawer with tabs for **Event Log**, **Breakpoints**, and **Fault Injections**.
 
@@ -172,7 +175,6 @@ When monitoring behavior tree execution under the **BTick** protocol, you can co
       **Node Information** panel on the right.
 
       **Inspecting Node Metadata and Telemetry**
-      ------------------------------------------
 
       The panel displays:
 
@@ -187,7 +189,6 @@ When monitoring behavior tree execution under the **BTick** protocol, you can co
         (e.g., ``goal: {target_pose}``); literal values appear with amber badges.
 
       **Live Node Port Editing**
-      --------------------------
 
       Under the **BTick** integration, ports can be modified dynamically:
 
@@ -351,4 +352,49 @@ Available capabilities depend on the active integration:
 * **Groot2** provides live tree visualization, breakpoint debugging, forced status overrides (Success/Failure), and read-only blackboard inspection .
 * **Nav2** provides non-intrusive, passive telemetry by subscribing directly to Nav2 topics, tracking execution states and failures without remote debugging controls.
 
-For a detailed feature-by-feature matrix, see :doc:`protocol_comparison`.
+10. Mobile & Tablet Network Collaboration
+=========================================
+
+BTick includes full native support for mobile phones and tablets, allowing field engineers to monitor, debug, and inspect robot Behavior Trees directly while standing next to the physical robot.
+
+Connecting via QR Code
+----------------------
+
+To connect a phone or tablet:
+
+1. On the desktop or primary workstation, click the **Settings** gear icon (⚙) in the header bar.
+2. Click **Mobile & Network Access**.
+3. A modal opens displaying:
+
+   * The local network address (e.g., ``http://192.168.1.X:3000``).
+   * An automatically generated **QR Code**.
+
+4. Scan the QR code using your mobile device's camera app. The BTick interface will launch in your mobile browser without having to type any IP addresses.
+
+.. figure:: _static/images/mobile.png
+   :alt: BTick mobile interface
+   :align: center
+
+
+.. note::
+   The mobile device and host machine must be connected to the same Wi-Fi router, local Ethernet network, or personal mobile hotspot.
+
+Touch & Responsive Mobile Interface
+-----------------------------------
+
+The visualizer automatically detects mobile viewports and adapts its layout:
+
+* **Bottom Sheet Drawer**: Selecting any node on mobile opens a touch-friendly bottom drawer showing node information and debugging actions. The drawer can be collapsed to a 35% peek view or expanded to 75% screen height.
+* **Compact Responsive Header & Sidebar**: The sidebar seamlessly slides over the canvas and can be toggled open or closed with a single tap.
+* **Canvas Touch Gestures**: Smooth multi-touch pinch-to-zoom and one-finger drag panning.
+* **Port Editing Auto-Center**: Tapping the pencil icon (✏) next to any node input port automatically glides and centers the node and input field directly in the middle of the mobile screen.
+
+Two-Way Real-Time Synchronization
+---------------------------------
+
+BTick features complete two-way state synchronization between Desktop and Mobile clients:
+
+* **Breakpoints**: Setting or removing a breakpoint on Mobile immediately reflects on the Desktop screen, and vice versa.
+* **Fault Overrides**: Forcing node status (``SUCCESS``, ``FAILURE``) or injecting delays from your phone instantly synchronizes across all connected devices.
+* **Interactive Stepping & Execution**: Resuming or stepping through execution from any device updates all clients simultaneously without feedback loops.
+* **Persistent Connection State**: If the desktop session already has active breakpoints and faults, newly connected mobile devices immediately receive the synchronized tree state upon opening.

@@ -46,6 +46,8 @@ Key Features
 - **Scalable Visualization & Navigation**: Navigate complex Behavior Trees with interactive panning and zooming.
 - **Multi-Protocol Monitoring & Telemetry**: Support BTick, Groot2 Pro Features compatibility, and Nav2 logging.
 - **Web & Desktop Applications**: Use BTick through web and desktop interfaces.
+- **Mobile & Tablet Access with Instant QR Code**: Connect smartphones and tablets over the local Wi-Fi with automatic QR code pairing and touch-optimized responsive layout.
+- **Real-Time Multi-Device State Synchronization**: Seamlessly debug simultaneously across desktop, tablet, and mobile devices—breakpoints, fault overrides, execution steps, and port edits sync instantly with zero delay.
 
 Getting Started
 ===============

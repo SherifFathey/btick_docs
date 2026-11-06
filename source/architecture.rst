@@ -35,21 +35,23 @@ The bridge layer acts as a multiplexer and normalization engine, abstracting the
                                                   |
                           +------------------------+------------------------+
                           |                                                 |
-                Web Application Path                              Desktop Application Path
+                Web & Mobile Path                                 Desktop Application Path
                           |                                                 |
                 +----------------------+                         +----------------------+
                 | WebSocket Server     |                         | Electron Desktop     |
                 | Port 8080            |                         | Application          |
                 |                      |                         |                      |
-                | HTTP Server          |                         | React + ReactFlow    |
+                | HTTP SPA Server      |                         | React + ReactFlow    |
                 | Port 3000            |                         |                      |
                 +----------------------+                         +----------------------+
-                          |                                                 |
-                +----------------------+                         +----------------------+
-                | Browser              |                         | Native Linux .deb    |
-                | React + ReactFlow    |                         |                      |
-                | localhost:3000       |                         |                      |
-                +----------------------+                         +----------------------+
+                     |            |                                         |
+          Desktop Browser    Mobile / Tablet                                |
+          React + ReactFlow  Touch UI & QR Code                             |
+          localhost:3000     <lan-ip>:3000                                  |
+                     |            |                                         |
+                     +------------+-----------------------------------------+
+                                  |
+               Two-Way Real-Time State Synchronization (sync_action)
 
 Components
 ==========
@@ -135,6 +137,15 @@ The bridge normalizes protocol data into JSON events and broadcasts them to fron
 * **blackboard_update**: Publishes Blackboard snapshots (Groot2).
 * **blackboard_update_response**: Reports the result of a Blackboard write command (BTick).
 * **set_node_port_response**: Reports the result of a node-port edit command (BTick).
+* **sync_action**: Broadcasts interactive debugging mutations (breakpoints, faults, port edits, stepping) across all connected Desktop, Mobile, and Web clients in real time.
+
+Multi-Client State Synchronization
+==================================
+
+BTick features a centralized in-memory synchronization layer within the bridge server that allows multiple devices to collaborate simultaneously:
+
+* **Real-Time Broadcast Loop Prevention**: When an operator sets a breakpoint or injects a fault on one device (e.g., a field tablet), the bridge applies the mutation to its in-memory tree model and broadcasts a standardized ``sync_action`` message to all other connected WebSocket clients. Clients update their local state reactively without re-emitting outbound commands.
+* **Persistent In-Memory Tree State**: Active breakpoints and fault rules are retained in the bridge's tree models. When a new device connects (such as opening the visualizer on a smartphone via QR code), the initial tree payload contains all existing breakpoints and fault overrides immediately.
 
 Event payloads and available debugging features vary by protocol. Nav2 is read-only; it does not provide standalone Blackboard updates or live node-port editing.
 

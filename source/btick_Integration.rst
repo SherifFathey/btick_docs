@@ -21,10 +21,36 @@ Prerequisites & Dependencies
 
 Ensure ROS 2 and the required BehaviorTree.CPP dependencies are installed.
 
-Building the ``btick`` Package
-------------------------------
+Installing the ``btick`` Package
+================================
 
-Clone the repository into a ROS 2 workspace and build the package:
+Option 1: Binary Installation via APT (Recommended)
+----------------------------------------------------
+
+If you are using **ROS 2 Jazzy** (Ubuntu 24.04 Noble), you can install the binary package directly via ``apt``, which is much easier than building from source:
+
+.. code-block:: bash
+
+   sudo apt update
+   sudo apt install ros-jazzy-btick
+
+Source your ROS 2 Jazzy workspace:
+
+.. code-block:: bash
+
+   source /opt/ros/jazzy/setup.bash
+
+Verify the installation:
+
+.. code-block:: bash
+
+   ros2 pkg prefix btick
+   # Output: /opt/ros/jazzy
+
+Option 2: Build from Source
+---------------------------
+
+For other ROS 2 distributions (Humble, Iron) or for development, you can build from source:
 
 .. code-block:: bash
 
@@ -32,6 +58,7 @@ Clone the repository into a ROS 2 workspace and build the package:
    cd ~/robot_ws/src
    git clone https://github.com/SherifFathey/btick.git
 
+Build the package using ``colcon``:
 
 .. code-block:: bash
 

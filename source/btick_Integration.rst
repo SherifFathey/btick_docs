@@ -27,25 +27,38 @@ Installing the ``btick`` Package
 Option 1: Binary Installation via APT (Recommended)
 ----------------------------------------------------
 
-If you are using **ROS 2 Jazzy** (Ubuntu 24.04 Noble), you can install the binary package directly via ``apt``, which is much easier than building from source:
+If you are using **ROS 2 Jazzy**, **Kilted**, or **Lyrical**, you can install the binary package directly via ``apt``, which is much easier than building from source:
 
 .. code-block:: bash
 
    sudo apt update
-   sudo apt install ros-jazzy-btick
+   sudo apt install ros-$ROS_DISTRO-btick
 
-Source your ROS 2 Jazzy workspace:
+You can also specify your ROS 2 distribution directly:
 
 .. code-block:: bash
 
-   source /opt/ros/jazzy/setup.bash
+   # ROS 2 Jazzy
+   sudo apt install ros-jazzy-btick
+
+   # ROS 2 Kilted
+   sudo apt install ros-kilted-btick
+
+   # ROS 2 Lyrical
+   sudo apt install ros-lyrical-btick
+
+Source your ROS 2 workspace:
+
+.. code-block:: bash
+
+   source /opt/ros/$ROS_DISTRO/setup.bash
 
 Verify the installation:
 
 .. code-block:: bash
 
    ros2 pkg prefix btick
-   # Output: /opt/ros/jazzy
+   # Output: /opt/ros/$ROS_DISTRO
 
 Option 2: Build from Source
 ---------------------------

@@ -25,3 +25,20 @@ Read the full documentation online:
 
 ---
 
+## 📦 BTick Integration
+
+To integrate BTick into your ROS 2 behavior tree applications, install the binary package via APT (supported on **Jazzy**, **Kilted**, and **Lyrical**):
+
+```bash
+sudo apt update
+sudo apt install ros-$ROS_DISTRO-btick
+```
+
+Or specify your target distribution directly:
+- **ROS 2 Jazzy**: `sudo apt install ros-jazzy-btick`
+- **ROS 2 Kilted**: `sudo apt install ros-kilted-btick`
+- **ROS 2 Lyrical**: `sudo apt install ros-lyrical-btick`
+
+
+---
+
